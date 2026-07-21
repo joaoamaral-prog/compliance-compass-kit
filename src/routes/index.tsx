@@ -210,12 +210,9 @@ function QuizPage() {
     <div className="min-h-screen bg-gradient-to-b from-background to-muted">
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex max-w-3xl items-center gap-2 px-6 py-4">
-          <ShieldCheck className="h-5 w-5 text-foreground" aria-hidden />
+          <ShieldCheck className="h-5 w-5 text-primary" aria-hidden />
           <span className="text-sm font-semibold tracking-tight text-foreground">
             BPO Paralegal
-          </span>
-          <span className="ml-2 text-xs text-muted-foreground">
-            Diagnóstico de risco regulatório
           </span>
         </div>
       </header>
@@ -258,7 +255,7 @@ function QuizPage() {
 
       <footer className="border-t border-border py-6">
         <p className="mx-auto max-w-3xl px-6 text-xs text-muted-foreground">
-          © BPO Paralegal — Assessoria societária, regulatória e documental.
+          © BPO Paralegal
         </p>
       </footer>
     </div>
@@ -270,33 +267,24 @@ function Intro({ onStart }: { onStart: () => void }) {
   return (
     <section className="animate-in fade-in duration-500 motion-reduce:animate-none">
       <div className="rounded-[var(--radius)] border border-border bg-card p-8 shadow-sm sm:p-12">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
           <ClipboardCheck className="h-3.5 w-3.5" aria-hidden />
-          Diagnóstico gratuito · 2 minutos
+          Gratuito · 2 minutos
         </div>
         <h1 className="text-balance text-3xl font-semibold leading-tight tracking-tight text-card-foreground sm:text-4xl">
-          Você sabe dizer, agora, quais alvarás e licenças da sua empresa vencem nos próximos 30 dias?
+          Quais licenças da sua empresa vencem nos próximos 30 dias?
         </h1>
-        <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Se a resposta for <span className="font-medium text-foreground">"não tenho certeza"</span>,
-          você não está sozinho — e isso pode estar custando mais caro do que parece. Multas,
-          interdições e travamentos societários costumam surgir de pontos cegos que passam
-          despercebidos entre unidades, estados e áreas.
-        </p>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-          Em 5 perguntas, você recebe um panorama do nível de exposição regulatória, societária e
-          documental da sua operação — sem compromisso.
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Se a resposta é <span className="font-medium text-foreground">"não sei"</span>, pode estar
+          custando caro. Descubra seu nível de risco em 5 perguntas.
         </p>
         <button
           onClick={onStart}
-          className="mt-8 inline-flex items-center gap-2 rounded-[var(--radius)] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="mt-8 inline-flex items-center gap-2 rounded-[var(--radius)] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
-          Fazer diagnóstico gratuito (2 minutos)
+          Começar diagnóstico
           <ArrowRight className="h-4 w-4" aria-hidden />
         </button>
-        <p className="mt-4 text-xs text-muted-foreground">
-          Seus dados são usados apenas para gerar o diagnóstico e o contato do especialista.
-        </p>
       </div>
     </section>
   );
@@ -426,14 +414,11 @@ function LeadForm({
   return (
     <section className="animate-in fade-in duration-300 motion-reduce:animate-none">
       <div className="rounded-[var(--radius)] border border-border bg-card p-6 shadow-sm sm:p-8">
-        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-          Último passo
-        </p>
-        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-card-foreground">
+        <h2 className="text-2xl font-semibold tracking-tight text-card-foreground">
           Seu diagnóstico está pronto
         </h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Preencha os dados abaixo para liberar o resultado personalizado da sua empresa.
+          Preencha para liberar o resultado.
         </p>
 
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
@@ -530,10 +515,6 @@ function LeadForm({
               )}
             </button>
           </div>
-          <p className="text-xs text-muted-foreground">
-            Ao enviar, você concorda em receber o resultado do diagnóstico e contato de um
-            especialista da BPO Paralegal.
-          </p>
         </form>
       </div>
     </section>
@@ -585,54 +566,25 @@ function Result({
         </h2>
 
         {tier === "baixo" && (
-          <>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              {lead.nome}, com base nas respostas, a operação de{" "}
-              <span className="font-medium text-foreground">{lead.empresa}</span> demonstra maturidade
-              no controle regulatório e documental. Não foram identificadas exposições críticas no
-              momento{topAreas.length > 0 ? `, embora ${focus} mereça atenção contínua` : ""}.
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              Como próximo passo, preparamos uma <span className="font-medium text-foreground">Planilha
-              de Controle de Vencimentos de Licenças e Certidões</span> para reforçar a rotina interna.
-              Sem urgência de venda, sem retorno comercial — apenas material útil.
-            </p>
-          </>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            {lead.nome}, a operação de{" "}
+            <span className="font-medium text-foreground">{lead.empresa}</span> mostra boa maturidade regulatória
+            {topAreas.length > 0 ? <> — atenção contínua em <span className="font-medium text-foreground">{focus}</span>.</> : "."}
+          </p>
         )}
 
         {tier === "moderado" && (
-          <>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              {lead.nome}, o diagnóstico da{" "}
-              <span className="font-medium text-foreground">{lead.empresa}</span> aponta lacunas
-              relevantes — principalmente em <span className="font-medium text-foreground">{focus}</span>.
-              São pontos que ainda não geraram prejuízo aberto, mas que costumam se transformar em
-              autuações e travamentos societários à medida que a operação cresce.
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              Recomendamos avançar para o diagnóstico completo com um especialista. Reservamos{" "}
-              <span className="font-medium text-foreground">prioridade de atendimento nas próximas 48h</span>{" "}
-              para o seu caso.
-            </p>
-          </>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            {lead.nome}, identificamos lacunas em{" "}
+            <span className="font-medium text-foreground">{focus}</span>. Prioridade de atendimento nas próximas 48h.
+          </p>
         )}
 
         {tier === "alto" && (
-          <>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              {lead.nome}, o resultado da{" "}
-              <span className="font-medium text-foreground">{lead.empresa}</span> indica exposição
-              elevada a multas, interdições e travamentos societários — com concentração em{" "}
-              <span className="font-medium text-foreground">{focus}</span>. Casos com esse perfil de
-              risco costumam gerar impacto financeiro relevante em poucos meses se não forem tratados
-              de forma estruturada.
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              Nosso time abriu <span className="font-medium text-foreground">atendimento
-              prioritário</span> para o seu caso. Fale agora com um especialista da BPO Paralegal para
-              mapear os riscos mais urgentes.
-            </p>
-          </>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            {lead.nome}, exposição elevada em{" "}
+            <span className="font-medium text-foreground">{focus}</span>. Atendimento prioritário aberto para {lead.empresa}.
+          </p>
         )}
 
         {/* CTAs */}
@@ -699,10 +651,6 @@ function Result({
           )}
         </div>
 
-        <p className="mt-6 text-xs text-muted-foreground">
-          Este diagnóstico é uma leitura inicial baseada nas respostas informadas e não substitui
-          análise técnica detalhada.
-        </p>
       </div>
     </section>
   );
