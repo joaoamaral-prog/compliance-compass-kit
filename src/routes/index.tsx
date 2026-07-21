@@ -414,14 +414,11 @@ function LeadForm({
   return (
     <section className="animate-in fade-in duration-300 motion-reduce:animate-none">
       <div className="rounded-[var(--radius)] border border-border bg-card p-6 shadow-sm sm:p-8">
-        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-          Último passo
-        </p>
-        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-card-foreground">
+        <h2 className="text-2xl font-semibold tracking-tight text-card-foreground">
           Seu diagnóstico está pronto
         </h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Preencha os dados abaixo para liberar o resultado personalizado da sua empresa.
+          Preencha para liberar o resultado.
         </p>
 
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
@@ -518,10 +515,6 @@ function LeadForm({
               )}
             </button>
           </div>
-          <p className="text-xs text-muted-foreground">
-            Ao enviar, você concorda em receber o resultado do diagnóstico e contato de um
-            especialista da BPO Paralegal.
-          </p>
         </form>
       </div>
     </section>
