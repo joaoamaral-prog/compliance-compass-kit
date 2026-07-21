@@ -267,33 +267,24 @@ function Intro({ onStart }: { onStart: () => void }) {
   return (
     <section className="animate-in fade-in duration-500 motion-reduce:animate-none">
       <div className="rounded-[var(--radius)] border border-border bg-card p-8 shadow-sm sm:p-12">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
           <ClipboardCheck className="h-3.5 w-3.5" aria-hidden />
-          Diagnóstico gratuito · 2 minutos
+          Gratuito · 2 minutos
         </div>
         <h1 className="text-balance text-3xl font-semibold leading-tight tracking-tight text-card-foreground sm:text-4xl">
-          Você sabe dizer, agora, quais alvarás e licenças da sua empresa vencem nos próximos 30 dias?
+          Quais licenças da sua empresa vencem nos próximos 30 dias?
         </h1>
-        <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Se a resposta for <span className="font-medium text-foreground">"não tenho certeza"</span>,
-          você não está sozinho — e isso pode estar custando mais caro do que parece. Multas,
-          interdições e travamentos societários costumam surgir de pontos cegos que passam
-          despercebidos entre unidades, estados e áreas.
-        </p>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-          Em 5 perguntas, você recebe um panorama do nível de exposição regulatória, societária e
-          documental da sua operação — sem compromisso.
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Se a resposta é <span className="font-medium text-foreground">"não sei"</span>, pode estar
+          custando caro. Descubra seu nível de risco em 5 perguntas.
         </p>
         <button
           onClick={onStart}
-          className="mt-8 inline-flex items-center gap-2 rounded-[var(--radius)] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="mt-8 inline-flex items-center gap-2 rounded-[var(--radius)] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
-          Fazer diagnóstico gratuito (2 minutos)
+          Começar diagnóstico
           <ArrowRight className="h-4 w-4" aria-hidden />
         </button>
-        <p className="mt-4 text-xs text-muted-foreground">
-          Seus dados são usados apenas para gerar o diagnóstico e o contato do especialista.
-        </p>
       </div>
     </section>
   );
