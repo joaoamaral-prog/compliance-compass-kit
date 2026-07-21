@@ -210,12 +210,9 @@ function QuizPage() {
     <div className="min-h-screen bg-gradient-to-b from-background to-muted">
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex max-w-3xl items-center gap-2 px-6 py-4">
-          <ShieldCheck className="h-5 w-5 text-foreground" aria-hidden />
+          <ShieldCheck className="h-5 w-5 text-primary" aria-hidden />
           <span className="text-sm font-semibold tracking-tight text-foreground">
             BPO Paralegal
-          </span>
-          <span className="ml-2 text-xs text-muted-foreground">
-            Diagnóstico de risco regulatório
           </span>
         </div>
       </header>
@@ -258,7 +255,7 @@ function QuizPage() {
 
       <footer className="border-t border-border py-6">
         <p className="mx-auto max-w-3xl px-6 text-xs text-muted-foreground">
-          © BPO Paralegal — Assessoria societária, regulatória e documental.
+          © BPO Paralegal
         </p>
       </footer>
     </div>
