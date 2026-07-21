@@ -566,54 +566,25 @@ function Result({
         </h2>
 
         {tier === "baixo" && (
-          <>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              {lead.nome}, com base nas respostas, a operação de{" "}
-              <span className="font-medium text-foreground">{lead.empresa}</span> demonstra maturidade
-              no controle regulatório e documental. Não foram identificadas exposições críticas no
-              momento{topAreas.length > 0 ? `, embora ${focus} mereça atenção contínua` : ""}.
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              Como próximo passo, preparamos uma <span className="font-medium text-foreground">Planilha
-              de Controle de Vencimentos de Licenças e Certidões</span> para reforçar a rotina interna.
-              Sem urgência de venda, sem retorno comercial — apenas material útil.
-            </p>
-          </>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            {lead.nome}, a operação de{" "}
+            <span className="font-medium text-foreground">{lead.empresa}</span> mostra boa maturidade regulatória
+            {topAreas.length > 0 ? <> — atenção contínua em <span className="font-medium text-foreground">{focus}</span>.</> : "."}
+          </p>
         )}
 
         {tier === "moderado" && (
-          <>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              {lead.nome}, o diagnóstico da{" "}
-              <span className="font-medium text-foreground">{lead.empresa}</span> aponta lacunas
-              relevantes — principalmente em <span className="font-medium text-foreground">{focus}</span>.
-              São pontos que ainda não geraram prejuízo aberto, mas que costumam se transformar em
-              autuações e travamentos societários à medida que a operação cresce.
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              Recomendamos avançar para o diagnóstico completo com um especialista. Reservamos{" "}
-              <span className="font-medium text-foreground">prioridade de atendimento nas próximas 48h</span>{" "}
-              para o seu caso.
-            </p>
-          </>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            {lead.nome}, identificamos lacunas em{" "}
+            <span className="font-medium text-foreground">{focus}</span>. Prioridade de atendimento nas próximas 48h.
+          </p>
         )}
 
         {tier === "alto" && (
-          <>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              {lead.nome}, o resultado da{" "}
-              <span className="font-medium text-foreground">{lead.empresa}</span> indica exposição
-              elevada a multas, interdições e travamentos societários — com concentração em{" "}
-              <span className="font-medium text-foreground">{focus}</span>. Casos com esse perfil de
-              risco costumam gerar impacto financeiro relevante em poucos meses se não forem tratados
-              de forma estruturada.
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              Nosso time abriu <span className="font-medium text-foreground">atendimento
-              prioritário</span> para o seu caso. Fale agora com um especialista da BPO Paralegal para
-              mapear os riscos mais urgentes.
-            </p>
-          </>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            {lead.nome}, exposição elevada em{" "}
+            <span className="font-medium text-foreground">{focus}</span>. Atendimento prioritário aberto para {lead.empresa}.
+          </p>
         )}
 
         {/* CTAs */}
@@ -680,10 +651,6 @@ function Result({
           )}
         </div>
 
-        <p className="mt-6 text-xs text-muted-foreground">
-          Este diagnóstico é uma leitura inicial baseada nas respostas informadas e não substitui
-          análise técnica detalhada.
-        </p>
       </div>
     </section>
   );
