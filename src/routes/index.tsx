@@ -12,84 +12,29 @@ import {
   Loader2,
   CheckCircle2,
 } from "lucide-react";
+import {
+  WEBHOOK_URL,
+  DOWNLOAD_URL_PLANILHA,
+  WHATSAPP_NUMBER,
+  BRAND_NAME,
+  TEXTS,
+  QUESTIONS,
+  TIER_THRESHOLDS,
+  type Option,
+  type Question,
+} from "@/config/quiz";
 
 export const Route = createFileRoute("/")({
   component: QuizPage,
 });
-
-// ==== Configuráveis ====
-const WEBHOOK_URL = "COLOQUE_AQUI_A_URL_DO_WEBHOOK";
-const DOWNLOAD_URL_PLANILHA = "COLOQUE_AQUI_O_LINK_DO_ARQUIVO";
-const WHATSAPP_NUMBER = "5511939558582";
-
-type Option = { label: string; points: 0 | 5 | 10 | 15 };
-type Question = { id: string; area: string; text: string; options: Option[] };
-
-const QUESTIONS: Question[] = [
-  {
-    id: "q1",
-    area: "Escala operacional",
-    text: "Quantas unidades ou filiais a sua empresa possui hoje?",
-    options: [
-      { label: "Apenas 1", points: 0 },
-      { label: "De 2 a 5", points: 5 },
-      { label: "De 6 a 20", points: 10 },
-      { label: "Mais de 20", points: 15 },
-    ],
-  },
-  {
-    id: "q2",
-    area: "Controle de vencimentos",
-    text: "Como é feito hoje o controle de vencimento de alvarás, licenças e certidões?",
-    options: [
-      { label: "Sistema centralizado com alertas automáticos", points: 0 },
-      { label: "Planilha própria, atualizada manualmente", points: 5 },
-      { label: "Cada unidade cuida por conta própria", points: 10 },
-      { label: "Não existe um controle formal", points: 15 },
-    ],
-  },
-  {
-    id: "q3",
-    area: "Histórico de autuações",
-    text: "Nos últimos 12 meses, a empresa já sofreu multa ou autuação por pendência documental?",
-    options: [
-      { label: "Não, nunca", points: 0 },
-      { label: "Quase aconteceu, mas resolvemos a tempo", points: 5 },
-      { label: "Sim, uma vez", points: 10 },
-      { label: "Sim, mais de uma vez", points: 15 },
-    ],
-  },
-  {
-    id: "q4",
-    area: "Governança interna",
-    text: "Existe um responsável dedicado à gestão regulatória e societária da empresa?",
-    options: [
-      { label: "Sim, equipe ou pessoa dedicada", points: 0 },
-      { label: "Sim, mas dividido com outras funções", points: 5 },
-      { label: "Não, é resolvido conforme a necessidade surge", points: 10 },
-      { label: "Não sabemos ao certo quem cuida disso hoje", points: 15 },
-    ],
-  },
-  {
-    id: "q5",
-    area: "Complexidade jurisdicional",
-    text: "A empresa atua em mais de um estado, com legislações diferentes entre si?",
-    options: [
-      { label: "Não, apenas um município", points: 0 },
-      { label: "Sim, dentro de um mesmo estado", points: 5 },
-      { label: "Sim, em vários estados", points: 10 },
-      { label: "Sim, em vários estados com legislações bem distintas entre si", points: 15 },
-    ],
-  },
-];
 
 type Lead = { nome: string; empresa: string; email: string; whatsapp: string };
 type Stage = "intro" | "quiz" | "form" | "result";
 type Tier = "baixo" | "moderado" | "alto";
 
 function getTier(score: number): Tier {
-  if (score <= 20) return "baixo";
-  if (score <= 40) return "moderado";
+  if (score <= TIER_THRESHOLDS.baixo) return "baixo";
+  if (score <= TIER_THRESHOLDS.moderado) return "moderado";
   return "alto";
 }
 
@@ -212,7 +157,7 @@ function QuizPage() {
         <div className="mx-auto flex max-w-3xl items-center gap-2 px-6 py-4">
           <ShieldCheck className="h-5 w-5 text-primary" aria-hidden />
           <span className="text-sm font-semibold tracking-tight text-foreground">
-            BPO Paralegal
+            {BRAND_NAME}
           </span>
         </div>
       </header>
@@ -255,7 +200,7 @@ function QuizPage() {
 
       <footer className="border-t border-border py-6">
         <p className="mx-auto max-w-3xl px-6 text-xs text-muted-foreground">
-          © BPO Paralegal
+          © {BRAND_NAME}
         </p>
       </footer>
     </div>
